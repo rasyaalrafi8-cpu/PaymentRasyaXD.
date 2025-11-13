@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment RasyaXD</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -14,224 +13,206 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
-            color: #f0f0f0;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
             overflow-x: hidden;
         }
 
         .container {
-            max-width: 800px;
-            width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
-        }
-
-        /* Welcome Page Styles */
-        #welcome-page {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            min-height: 80vh;
             padding: 20px;
-            animation: fadeIn 1s ease-out;
-        }
-
-        .welcome-logo {
-            height: 150px;
-            width: auto;
-            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
-            margin-bottom: 30px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .welcome-title {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #ffd700, #ffaa00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        .welcome-subtitle {
-            font-size: 1.5rem;
-            color: #cccccc;
-            margin-bottom: 40px;
-            max-width: 600px;
-            line-height: 1.6;
-        }
-
-        .welcome-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(to right, #ffd700, #ffaa00);
-            color: #000;
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .welcome-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6);
-        }
-
-        .welcome-btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, #ffaa00, #ffd700);
-            z-index: -1;
-            transition: opacity 0.3s ease;
-            opacity: 0;
-        }
-
-        .welcome-btn:hover::after {
-            opacity: 1;
-        }
-
-        /* Payment Page Styles */
-        #payment-page {
-            display: none;
-            width: 100%;
-            animation: slideUp 0.8s ease-out;
         }
 
         header {
             text-align: center;
-            margin-bottom: 40px;
-            padding: 20px;
+            padding: 30px 0;
             position: relative;
         }
 
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
         .logo {
-            height: 100px;
-            width: auto;
-            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
-            transition: transform 0.5s ease;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 3px solid #00c6ff;
+            animation: float 6s ease-in-out infinite;
         }
 
-        .logo:hover {
-            transform: scale(1.05) rotate(5deg);
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
         }
 
         h1 {
             font-size: 2.8rem;
             margin-bottom: 10px;
-            background: linear-gradient(to right, #ffffff, #aaaaaa);
+            background: linear-gradient(to right, #00c6ff, #0072ff);
             -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 114, 255, 0.3);
         }
 
         .subtitle {
             font-size: 1.2rem;
-            color: #cccccc;
+            color: #a0a0c0;
             margin-bottom: 30px;
         }
 
-        .payment-container {
+        .main-content {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
             gap: 30px;
-            margin-bottom: 40px;
+            margin-top: 30px;
         }
 
-        .payment-card {
-            background: rgba(30, 30, 30, 0.8);
-            border-radius: 15px;
-            padding: 25px;
-            width: 100%;
-            max-width: 350px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        .section {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #00c6ff;
             position: relative;
-            overflow: hidden;
-            border: 1px solid #333;
+            padding-bottom: 10px;
         }
 
-        .payment-card:hover {
-            transform: translateY(-10px) rotateX(5deg);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
-        }
-
-        .payment-card::before {
+        .section-title::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, #ffd700, #ffaa00);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            border-radius: 3px;
+        }
+
+        .welcome-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #d0d0e0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4);
+            text-decoration: none;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 114, 255, 0.6);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(to right, #ff6b6b, #ff8e53);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        .btn-tertiary {
+            background: linear-gradient(to right, #00d2ff, #3a7bd5);
+            box-shadow: 0 5px 15px rgba(58, 123, 213, 0.4);
+        }
+
+        .btn-tertiary:hover {
+            box-shadow: 0 8px 20px rgba(58, 123, 213, 0.6);
+        }
+
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .payment-method {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            background: rgba(0, 0, 0, 0.3);
         }
 
         .payment-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #ffd700;
-        }
-
-        .payment-title i {
-            font-size: 1.8rem;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #00c6ff;
         }
 
         .payment-details {
-            margin-bottom: 20px;
+            display: none;
+            margin-top: 15px;
+            animation: fadeIn 0.5s ease;
         }
 
-        .payment-number {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 12px 15px;
-            border-radius: 8px;
-            font-size: 1.2rem;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dana-number {
+            font-size: 1.5rem;
             font-weight: bold;
-            letter-spacing: 1px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
+            margin: 15px 0;
+            color: #00c6ff;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: inline-block;
         }
 
         .qris-image {
-            width: 100%;
+            max-width: 250px;
+            margin: 15px auto;
             border-radius: 10px;
             overflow: hidden;
-            margin-bottom: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
@@ -241,345 +222,221 @@
             display: block;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background: linear-gradient(to right, #ffd700, #ffaa00);
-            color: #000;
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5);
-        }
-
-        .btn i {
-            margin-right: 8px;
-        }
-
-        .contact-section {
-            text-align: center;
-            margin: 40px 0;
-            padding: 30px;
-            background: rgba(30, 30, 30, 0.8);
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        .walpaper {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 500px;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.2;
         }
 
-        .contact-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #ffd700;
+        .walpaper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .whatsapp-link, .channel-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin: 15px 0;
-            padding: 12px 25px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 50px;
-            text-decoration: none;
-            color: #f0f0f0;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .whatsapp-link:hover, .channel-link:hover {
-            background: rgba(255, 215, 0, 0.2);
-            transform: translateY(-3px);
-        }
-
-        .whatsapp-link i, .channel-link i {
-            font-size: 1.5rem;
-            color: #25D366;
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
         }
 
         footer {
             text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            color: #888;
+            padding: 30px 0;
+            margin-top: 50px;
+            color: #a0a0c0;
             font-size: 0.9rem;
-            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .copy-notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #25D366;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1000;
+        /* Tab Styles */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 10px;
         }
 
-        .copy-notification.show {
-            opacity: 1;
-        }
-
-        /* Audio Player Styles */
-        .audio-container {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-            opacity: 0.1;
-            transition: opacity 0.3s ease;
-            background: rgba(0, 0, 0, 0.7);
+        .tab-btn {
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #a0a0c0;
+            border: none;
             border-radius: 10px;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .audio-container:hover {
-            opacity: 1;
-        }
-
-        .audio-container i {
-            color: #ffd700;
-            font-size: 1.5rem;
-        }
-
-        .audio-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .volume-slider {
-            -webkit-appearance: none;
-            width: 80px;
-            height: 5px;
-            background: #444;
-            border-radius: 5px;
-            outline: none;
-        }
-
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 15px;
-            height: 15px;
-            background: #ffd700;
-            border-radius: 50%;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .tab-btn.active {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4);
         }
 
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .tab-btn:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+        .tab-content {
+            display: none;
         }
 
-        @keyframes glow {
-            from { text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
-            to { text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6); }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
             h1 {
                 font-size: 2.2rem;
             }
             
-            .welcome-title {
-                font-size: 2.5rem;
+            .section {
+                padding: 20px;
             }
             
-            .payment-container {
+            .tabs {
                 flex-direction: column;
                 align-items: center;
             }
             
-            .payment-card {
-                max-width: 100%;
-            }
-            
-            .logo, .welcome-logo {
-                height: 80px;
-            }
-            
-            .audio-container {
-                bottom: 10px;
-                left: 10px;
-                padding: 8px;
+            .tab-btn {
+                width: 100%;
+                max-width: 250px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Welcome Page -->
-    <div id="welcome-page">
-        <div class="container">
-            <img src="https://files.catbox.moe/vk72un.png" alt="Logo" class="welcome-logo">
-            <h1 class="welcome-title">Welcome Di Website Payment RasyaXD</h1>
-            <p class="welcome-subtitle"></p>
-            <button class="welcome-btn" onclick="showPaymentPage()">
-                <i class="fas fa-arrow-right"></i> Lihat Metode Pembayaran
-            </button>
-        </div>
+    <div class="walpaper">
+        <img src="https://files.catbox.moe/oqz6da.jpg" alt="Background">
     </div>
 
-    <!-- Payment Page -->
-    <div id="payment-page">
-        <div class="container">
-            <header>
-                <div class="logo-container">
-                    <img src="https://files.catbox.moe/vk72un.png" alt="Logo" class="logo">
-                </div>
-                <h1>Payment RasyaXD</h1>
-                <p class="subtitle"></p>
-            </header>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="https://files.catbox.moe/vk72un.png" alt="Logo RasyaXD">
+            </div>
+            <h1>RasyaXD Payment</h1>
+            <p class="subtitle"></p>
+        </header>
 
-            <div class="payment-container">
-                <div class="payment-card">
-                    <h2 class="payment-title">
-                        <i class="fas fa-wallet"></i> DANA
-                    </h2>
-                    <div class="payment-details">
-                        <div class="payment-number">
-                            <span>082285929576</span>
-                            <button class="btn" onclick="copyToClipboard('082285929576')">
-                                <i class="fas fa-copy"></i> Salin
-                            </button>
+        <div class="main-content">
+            <section id="welcome" class="section tab-content active">
+                <h2 class="section-title">Welcome Di Website Payment RasyaXD</h2>
+                <p class="welcome-text">
+                </p>
+                <div class="btn-container">
+                    <button class="btn" onclick="openTab('payment')">Lihat Metode Pembayaran</button>
+            </section>
+
+            <section id="payment" class="section tab-content">
+                <h2 class="section-title">Metode Pembayaran</h2>
+                <div class="payment-options">
+                    <div class="payment-method">
+                        <h3 class="payment-title">DANA</h3>
+                        <button class="btn" onclick="togglePayment('dana')">Lihat Nomor DANA</button>
+                        <div id="dana-details" class="payment-details">
+                            <div class="dana-number">082285929576</div>
+                            <button class="btn" onclick="copyToClipboard('082285929576')">Salin Nomor</button>
                         </div>
-                        <p>Transfer ke nomor DANA di atas untuk menyelesaikan pembayaran</p>
+                    </div>
+
+                    <div class="payment-method">
+                        <h3 class="payment-title">QRIS</h3>
+                        <button class="btn" onclick="togglePayment('qris')">Lihat QRIS</button>
+                        <div id="qris-details" class="payment-details">
+                            <div class="qris-image">
+                                <img src="https://files.catbox.moe/lnr1do.jpeg" alt="QRIS Payment">
+                            </div>
+                            <button class="btn btn-secondary" onclick="downloadQRIS()">Download QRIS</button>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <div class="payment-card">
-                    <h2 class="payment-title">
-                        <i class="fas fa-qrcode"></i> QRIS
-                    </h2>
-                    <div class="payment-details">
-                        <div class="qris-image">
-                            <img src="https://files.catbox.moe/lnr1do.jpeg" alt="QRIS Payment">
-                        </div>
-                        <p>Sertakan Bukti Transfer, Tidak Ada Bukti Transfer Tidak Akan di Proses!</p>
+            <section id="info" class="section tab-content">
+                <h2 class="section-title">Informasi Lainnya</h2>
+                <div class="welcome-text">
+                    <p>Terima kasih telah menggunakan layanan pembayaran RasyaXD.</p>
+                    <p>Untuk informasi lebih lanjut, silakan hubungi:</p>
+                    <div style="margin-top: 20px;">
+                        <p><strong>Email:</strong> support@rasyaxd.com</p>
+                        <p><strong>Telepon:</strong> +62 812-3456-7890</p>
+                        <p><strong>Jam Operasional:</strong> 08.00 - 22.00 WIB</p>
                     </div>
-                    <a href="https://files.catbox.moe/lnr1do.jpeg" target="_blank" class="btn">
-                        <i class="fas fa-expand"></i> Perbesar QR
-                    </a>
                 </div>
-            </div>
-
-            <div class="contact-section">
-                <h2 class="contact-title">Hubungi Kami</h2>
-                <a href="https://wa.me/6289677269810" target="_blank" class="whatsapp-link">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>whatsapp Admin</span>
-                </a>
-                <br>
-                <a href="https://whatsapp.com/channel/0029Vb8Ahsm2phHR7AkyIx2O" target="_blank" class="channel-link">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>Saluran WhatsApp Kami</span>
-                </a>
-            </div>
-
-            <footer>
-                <p>&copy; 2023 Payment RasyaXD. All rights reserved.</p>
-            </footer>
+                <div class="btn-container">
+                    <button class="btn" onclick="openTab('welcome')">Kembali ke Welcome</button>
+                    <button class="btn btn-secondary" onclick="openTab('payment')">Lihat Payment</button>
+                </div>
+            </section>
         </div>
+
+        <footer>
+            <p></p>
+        </footer>
     </div>
-
-    <!-- Audio Player -->
-    <div class="audio-container">
-        <i class="fas fa-music"></i>
-        <div class="audio-controls">
-            <input type="range" min="0" max="1" step="0.01" value="0.5" class="volume-slider" id="volumeSlider">
-        </div>
-    </div>
-
-    <div class="copy-notification" id="copyNotification">Nomor berhasil disalin!</div>
-
-    <audio id="bgMusic" loop>
-        <source src="https://e.top4top.io/m_3595rgktj0.mp3" type="audio/mpeg">
-        Browser Anda tidak mendukung elemen audio.
-    </audio>
 
     <script>
-        // Show payment page function
-        function showPaymentPage() {
-            document.getElementById('welcome-page').style.display = 'none';
-            document.getElementById('payment-page').style.display = 'block';
+        function openTab(tabName) {
+            // Hide all tab content
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
             
-            // Scroll to top of payment page
-            window.scrollTo(0, 0);
+            // Remove active class from all tab buttons
+            const tabButtons = document.getElementsByClassName('tab-btn');
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+            
+            // Show the specific tab content and activate the button
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
         }
 
-        // Audio functionality
-        const bgMusic = document.getElementById('bgMusic');
-        const volumeSlider = document.getElementById('volumeSlider');
-        
-        // Set volume based on slider
-        volumeSlider.addEventListener('input', function() {
-            bgMusic.volume = this.value;
-        });
-        
-        // Try to play audio automatically when page loads
-        window.addEventListener('load', function() {
-            bgMusic.volume = 0.5;
-            const playPromise = bgMusic.play();
+        function togglePayment(type) {
+            const danaDetails = document.getElementById('dana-details');
+            const qrisDetails = document.getElementById('qris-details');
             
-            if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                    // Audio played successfully
-                }).catch(error => {
-                    // Auto-play was prevented, show a message or handle it
-                    console.log("Autoplay prevented: ", error);
-                });
+            if (type === 'dana') {
+                danaDetails.style.display = danaDetails.style.display === 'block' ? 'none' : 'block';
+                qrisDetails.style.display = 'none';
+            } else if (type === 'qris') {
+                qrisDetails.style.display = qrisDetails.style.display === 'block' ? 'none' : 'block';
+                danaDetails.style.display = 'none';
             }
-        });
+        }
 
-        // Copy to clipboard function
         function copyToClipboard(text) {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            
-            // Show notification
-            const notification = document.getElementById('copyNotification');
-            notification.classList.add('show');
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 2000);
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Nomor DANA berhasil disalin: ' + text);
+            }).catch(err => {
+                console.error('Gagal menyalin teks: ', err);
+            });
+        }
+
+        function downloadQRIS() {
+            const link = document.createElement('a');
+            link.href = 'https://files.catbox.moe/lnr1do.jpeg';
+            link.download = 'qris-rasyaxd.jpeg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
     </script>
 </body>
